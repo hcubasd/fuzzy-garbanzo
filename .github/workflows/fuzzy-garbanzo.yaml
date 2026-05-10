@@ -5,6 +5,9 @@ on:
       registry:
         type: string
         required: true
+      image:
+        type: string
+        required: true
     secrets:
       username:
         required: true
@@ -27,7 +30,7 @@ jobs:
       - uses: docker/metadata-action@v6
         id: meta
         with:
-          images: ${{inputs.registry}}/${{github.repository}}
+          images: ${{inputs.registry}}/${{inputs.image}}
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}

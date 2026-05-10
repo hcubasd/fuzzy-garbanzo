@@ -8,13 +8,14 @@ Shared GitHub Actions reusable workflows for the org.
 
 Builds a multi-arch (`linux/amd64`, `linux/arm64`) Docker image, pushes it to a container registry, and creates a GitHub Release. Triggered via `workflow_call`.
 
-The image is tagged with the full semver, major.minor, and major version from the git tag. The image name is derived from the calling repository — only the registry needs to be specified.
+The image is tagged with the full semver, major.minor, and major version from the git tag.
 
 #### Inputs
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | `registry` | string | yes | Container registry host (e.g. `ghcr.io`, `docker.io`) |
+| `image` | string | yes | Image name as `namespace/repo-name` (e.g. `myuser/myrepo`) |
 
 #### Secrets
 
@@ -33,9 +34,10 @@ on:
       - "v*.*.*"
 jobs:
   deploy:
-    uses: hcubasd/fuzzy-garbanzo/.github/workflows/fuzzy-garbanzo.yaml@v0.1.1
+    uses: hcubasd/fuzzy-garbanzo/.github/workflows/fuzzy-garbanzo.yaml@v0.1.2
     with:
       registry: ghcr.io
+      image: hcubasd/myrepo
     secrets:
       username: ${{github.actor}}
       password: ${{secrets.GITHUB_TOKEN}}
@@ -54,9 +56,10 @@ on:
       - "v*.*.*"
 jobs:
   deploy:
-    uses: hcubasd/fuzzy-garbanzo/.github/workflows/fuzzy-garbanzo.yaml@v0.1.1
+    uses: hcubasd/fuzzy-garbanzo/.github/workflows/fuzzy-garbanzo.yaml@v0.1.2
     with:
       registry: docker.io
+      image: mydockerhubuser/myrepo
     secrets:
       username: ${{secrets.DOCKERHUB_USERNAME}}
       password: ${{secrets.DOCKERHUB_TOKEN}}
@@ -69,4 +72,4 @@ Permissions must be granted at the caller level as well as in the reusable workf
 
 ## Versioning
 
-This repo is semver tagged. Pin callers to a specific version (e.g. `@v0.1.1`) and update deliberately when a new version is cut.
+This repo is semver tagged. Pin callers to a specific version (e.g. `@v0.1.2`) and update deliberately when a new version is cut.
