@@ -5,7 +5,7 @@ on:
       registry:
         type: string
         required: true
-      image:
+      repository:
         type: string
         required: true
     secrets:
@@ -30,7 +30,7 @@ jobs:
       - uses: docker/metadata-action@v6
         id: meta
         with:
-          images: ${{inputs.registry}}/${{inputs.image}}
+          images: ${{inputs.registry}}/${{secrets.username}}/${{inputs.repository}}
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
