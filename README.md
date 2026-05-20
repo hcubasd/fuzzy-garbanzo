@@ -34,7 +34,7 @@ on:
       - "v*.*.*"
 jobs:
   deploy:
-    uses: hcubasd/fuzzy-garbanzo/.github/workflows/fuzzy-garbanzo.yaml@v0.1.3
+    uses: hcubasd/fuzzy-garbanzo/.github/workflows/fuzzy-garbanzo.yaml@v1.0.0
     with:
       registry: ghcr.io
       repository: myrepo
@@ -56,7 +56,7 @@ on:
       - "v*.*.*"
 jobs:
   deploy:
-    uses: hcubasd/fuzzy-garbanzo/.github/workflows/fuzzy-garbanzo.yaml@v0.1.3
+    uses: hcubasd/fuzzy-garbanzo/.github/workflows/fuzzy-garbanzo.yaml@v1.0.0
     with:
       registry: docker.io
       repository: myrepo
@@ -70,6 +70,12 @@ jobs:
 
 Permissions must be granted at the caller level as well as in the reusable workflow, since GitHub intersects the two.
 
+## Scripts
+
+Helper scripts for setting up a development environment on a new machine:
+
+- `scripts/config-helix.sh` — configures the Helix editor for this project's stack
+
 ## Versioning
 
-This repo is semver tagged. Pin callers to a specific version (e.g. `@v0.1.3`) and update deliberately when a new version is cut.
+This repo is semver tagged. Pin callers to a specific version (e.g. `@v1.0.0`) and update deliberately when a new version is cut.
