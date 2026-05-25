@@ -34,7 +34,7 @@ on:
       - "v*.*.*"
 jobs:
   deploy:
-    uses: hcubasd/fuzzy-garbanzo/.github/workflows/fuzzy-garbanzo.yaml@v1.0.0
+    uses: hcubasd/fuzzy-garbanzo/.github/workflows/fuzzy-garbanzo.yaml@v1.0.1
     with:
       registry: ghcr.io
       repository: myrepo
@@ -56,7 +56,7 @@ on:
       - "v*.*.*"
 jobs:
   deploy:
-    uses: hcubasd/fuzzy-garbanzo/.github/workflows/fuzzy-garbanzo.yaml@v1.0.0
+    uses: hcubasd/fuzzy-garbanzo/.github/workflows/fuzzy-garbanzo.yaml@v1.0.1
     with:
       registry: docker.io
       repository: myrepo
